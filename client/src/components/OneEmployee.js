@@ -13,7 +13,7 @@ const OneEmployee = () => {
 
     
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/worker/${id}`)
+        axios.get(`http://localhost:8000/api/worker/${id}`,{withCredentials:true, credentials:'include'})
         .then((res)=>{
             setOneEmployee(res.data)
         }).catch((err)=>{
@@ -23,10 +23,10 @@ const OneEmployee = () => {
     },[])
 
     const deleteHandler = (id) => {
-        axios.delete(`http://localhost:8000/api/delete/${id}`)
+        axios.delete(`http://localhost:8000/api/delete/${id}`,{withCredentials:true, credentials:'include'})
         .then((res)=>{
             console.log('Deleted')
-            navigate('/')
+            navigate('/employees')
         }).catch((err)=>{
             console.log(err)
         })
@@ -38,7 +38,7 @@ const OneEmployee = () => {
 
             <div class="flex1">
                 <h1>Office Directory</h1> 
-                <Link to="/" className="m-3">back to home</Link>
+                <Link to="/employees" className="m-3">back to home</Link>
         </div>
 
 

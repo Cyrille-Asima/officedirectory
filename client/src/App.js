@@ -5,6 +5,8 @@ import OneEmployee from './components/OneEmployee';
 import AllEmployee from './components/AllEmployees';
 import Views from './components/views';
 import Update from './components/Update'
+import Register from './components/Register';
+import Login from './components/login';
 function App() {
   return (
     <div className="App">
@@ -12,9 +14,13 @@ function App() {
         <Views></Views>
         <Routes>
           <Route path="/employer"element={<CreateWorker/>}/>
-          <Route path="/"element={<AllEmployee/>}/>
+          <Route path="employees"element={<AllEmployee/>}/>
           <Route path="/employee/:id"element={<OneEmployee/>}/>
           <Route path="/update/:id"element={<Update/>}/>
+          <Route path="/" element={<Register/>}/>
+          <Route path="/login" element={<Login/>}/>
+
+
 
         </Routes>
 

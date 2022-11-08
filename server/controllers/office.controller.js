@@ -29,7 +29,7 @@ module.exports = {
 
     },
     updateWorker:(req,res)=>{
-        Office.updateOne({_id:req.params.id}, req.body,{new:true,runValidators:false})
+        Office.updateOne({_id:req.params.id}, req.body,{new:true,runValidators:true})
         .then((result)=>{
             res.json(result)
         }).catch((err)=>{

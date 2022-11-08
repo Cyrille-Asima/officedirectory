@@ -24,7 +24,7 @@ const Update = () => {
     const [image, setImage] = useState('')
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/worker/${id}`)
+        axios.get(`http://localhost:8000/api/worker/${id}`, {withCredentials:true, credentials:'include'})
         .then((res)=>{
             console.log(res)
             setFirstName(res.data.firstName)
@@ -56,8 +56,8 @@ const Update = () => {
             email,
             number,
             image,
-        }).then((res)=>{
-            navigate('/')
+        },{withCredentials:true, credentials:'include'}).then((res)=>{
+            navigate('/employees')
         }).catch((err)=>{
             console.log(err)
             setErrors(err.response.data.errors)
@@ -73,7 +73,7 @@ return (
             
     <div className="flex1">
         <h1>Office Directory</h1> 
-        <Link to="/" className="m-3">Back to home</Link>
+        <Link to="/employees" className="m-3">Back to home</Link>
     </div>
 
     <form onSubmit={submitHandler} className='new container-fluid'>

@@ -37,9 +37,9 @@ const CreateWorker = () =>{
             email,
             number,
             image,
-        }).then((res)=>{
+        },{withCredentials:true, credentials:'include'}).then((res)=>{
             console.log(res)
-            navigate('/')
+            navigate('/employees')
         }).catch((err)=>{
             console.log(err)
             setErrors(err.response.data.errors)
@@ -53,7 +53,7 @@ const CreateWorker = () =>{
             
             <div className="flex1">
                 <h1>Office Directory</h1> 
-                <Link to="/" className="m-3">Back to home</Link>
+                <Link to="/employees" className="m-3">Back to home</Link>
             </div>
 
             <form onSubmit={submitHandler} className='new container-fluid'>
