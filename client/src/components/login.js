@@ -9,7 +9,7 @@ const Login = () => {
 
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
-    // const [errors,setErrors] = useState({})
+    const [errors,setErrors] = useState({})
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -22,7 +22,7 @@ const Login = () => {
             navigate('/employees')
         }).catch((err)=>{
             console.log(err)
-            // setErrors(err.response.data.errors)
+            setErrors(err.response.data.errors)
 
         })
     }
