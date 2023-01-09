@@ -9,7 +9,7 @@ const Login = () => {
 
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
-    const [errors,setErrors] = useState({})
+    const [errors,setErrors] = useState('')
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -21,8 +21,8 @@ const Login = () => {
         .then((res)=>{
             navigate('/employees')
         }).catch((err)=>{
-            console.log(err)
-            setErrors(err.response.data.errors)
+            console.log(err) 
+            setErrors(err.response.data.error)
 
         })
     }
@@ -30,18 +30,21 @@ const Login = () => {
     return (
 
         <div>
-            <h1>Register to Office Directory</h1>
+            <h1>Login to Office Directory</h1>
             <Link to='/'>Need an account?</Link>
             <form onSubmit={submitHandler} className='col-3 mx-auto'>
-                <label>Email:</label>
-                <input type="text" className='form-control'onChange={(e)=>setEmail(e.target.value)}></input>
-                {/* {errors.email ?<span className="text-danger">{errors.email.message}</span> : null}<br></br> */}
-                <label>Password:</label>
-                <input type="password" className='form-control'onChange={(e)=>setPassword(e.target.value)}></input>
-                {/* {errors.password ?<span className="text-danger">{errors.password.message}</span> : null}<br></br> */}
 
+            <label>Email:</label>
+                <input type="text" className='form-control'onChange={(e)=>setEmail(e.target.value)}></input>
+                <p className="text-danger">{errors? errors:''}</p>
+
+                <label>Password:</label>
+                <input type="password" className='form-control'onChange={(e)=>setPassword(e.target.value)}></input>   
+                <p className="text-danger">{errors? errors:''}</p>
 
                 <button className='btn btn-info mt-3'>Login</button>
+
+                
             </form>
         </div>
     )
